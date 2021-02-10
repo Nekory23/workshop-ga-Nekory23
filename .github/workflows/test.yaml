@@ -12,8 +12,9 @@ jobs:
 
     steps:
     - name: print hello
-      shell: bash
+      shell: bash #optional
       run: echo Welcome to the Github Actions workshop !
+
   unit-tests:
     runs-on: ubuntu-20.04
     container: docker://epitechcontent/epitest-docker
@@ -23,12 +24,12 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Run unit-tests
-      shell: bash
+      shell: bash #optional
       run: make tests_run
 
     - name: Get coverage
       if: ${{ always() }}
-      shell: bash
+      shell: bash #optional
       run: make coverage > coverage_outputs
 
     - name: Upload coverage artifact
@@ -37,3 +38,25 @@ jobs:
       with:
         name: coverage_outputs
         path: ./coverage_outputs
+
+  functional-tests:
+    runs-on: ubuntu-20.04
+    container: docker://epitechcontent/epitest-docker
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Get tests
+      if: ${{ always() }}
+      shell: bash #optional
+      run : |
+        make
+        ./functional-test.sh > function-tests_outputs
+
+    - name: Upload artifacts
+      if: ${{ always() }}
+      uses: actions/upload-artifacts@v2
+      with:
+        name: function-tests_outputs
+        path: ./function-tests_outputs
