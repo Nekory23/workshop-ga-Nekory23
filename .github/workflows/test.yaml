@@ -19,7 +19,9 @@ jobs:
 
     steps:
     - name: check repo
-      run: echo mdr jsp comment faire
+      uses: action/checkout@v2
+      with:
+        ref: dev
 
     - name: run unit-tests
       run: make tests_run
