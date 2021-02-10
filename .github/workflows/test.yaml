@@ -14,3 +14,15 @@ jobs:
     - name: print hello
       shell: bash
       run: echo Welcome to the Github Actions workshop !
+  unit-tests:
+    runs-on: ubuntu-20.04
+
+    steps:
+    - name: check repo
+      run: echo mdr jsp comment faire
+
+    - name: run unit-tests
+      run: make tests_run
+
+    - name: run coverage
+      run: make coverage
