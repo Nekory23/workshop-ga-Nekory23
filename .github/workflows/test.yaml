@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - name: check repo
-      uses: action/checkout@v2
+      uses: action/checkout@workshop-ga-Nekory23
       with:
         ref: dev
 
