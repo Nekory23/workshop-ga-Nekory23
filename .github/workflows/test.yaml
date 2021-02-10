@@ -48,11 +48,8 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Get tests
-      if: ${{ always() }}
       shell: bash #optional
-      run : |
-        make
-        ./functional-test.sh > function-tests_outputs
+      run : make && ./functional-test.sh > function-tests_outputs
 
     - name: Upload artifacts
       if: ${{ always() }}
