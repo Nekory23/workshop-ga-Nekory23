@@ -53,7 +53,7 @@ jobs:
 
     - name: Upload artifacts
       if: ${{ always() }}
-      uses: actions/upload-artifacts@v2
+      uses: actions/upload-artifact@v2
       with:
         name: function-tests_outputs
         path: ./function-tests_outputs
